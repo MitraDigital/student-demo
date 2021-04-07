@@ -47,6 +47,11 @@ public class StudentController {
 		return "hi there";
 	}
 	
+	@GetMapping("/api/say2")
+	public String hello2(){
+		return "hi there2";
+	}
+	
 	@GetMapping("/api/studentByName/{name}")
 	public Student getStudentByName(@PathVariable String name){
 		return studentService.getStudentByName(name);
