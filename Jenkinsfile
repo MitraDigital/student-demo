@@ -1,16 +1,10 @@
-pipeline {
-    agent any
-    
-	tools {
-		maven 'Maven3.6.3'
-	}
+node {
 
-    stages {
-        stage ('Compile') {
+    checkout scm
 
-            steps {
-                    sh 'mvn -v'
-            }
-        }
+    docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
+
+        def img = docker.build("nirushanth/student-demo-test")
+        img.push()
     }
 }
