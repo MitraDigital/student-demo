@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mitrai.studentDemo.entity.Student;
+import com.mitrai.studentDemo.kafkaProducer.ProducerService;
 import com.mitrai.studentDemo.service.StudentService;
 
 @RestController
@@ -22,9 +23,20 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 	
+	@Autowired
+	private ProducerService producerService;
+	
+	/*@GetMapping("/api/msg/{data}")
+	public String msg(@PathVariable String data){
+		//producerService.test(data);
+		//return "message sent : "+ data;
+	}*/
+	
 	@PostMapping("/api/addStudent")
 	public Student addStudent(@RequestBody Student student) {
-		return studentService.saveStudent(student);
+		Student savedStudent = studentService.saveStudent(student);
+		producerService.addStudentSync(savedStudent);
+		return savedStudent;
 	}
 	
 	@PostMapping("/api/addStudents")
@@ -40,16 +52,6 @@ public class StudentController {
 	@GetMapping("/api/studentById/{studentId}")
 	public Student getStudentById(@PathVariable int studentId){
 		return studentService.getStudentById(studentId);
-	}
-	
-	@GetMapping("/api/say")
-	public String hello(){
-		return "hi there SS1";
-	}
-	
-	@GetMapping("/api/say2")
-	public String hello2(){
-		return "hi there TT2";
 	}
 	
 	@GetMapping("/api/studentByName/{name}")

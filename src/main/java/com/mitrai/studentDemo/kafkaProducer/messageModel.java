@@ -1,25 +1,19 @@
-package com.mitrai.studentDemo.entity;
+package com.mitrai.studentDemo.kafkaProducer;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class messageModel {
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "Student_tbl")
-public class Student {
-	@Id
-	@GeneratedValue
 	private int studentId;
 	private String name;
 	private int score;
 	
+	public messageModel() {
+	}
+	public messageModel(int studentId, String name, int score) {
+		super();
+		this.studentId = studentId;
+		this.name = name;
+		this.score = score;
+	}
 	public int getStudentId() {
 		return studentId;
 	}
@@ -42,5 +36,4 @@ public class Student {
 	public String toString() {
 		return "Student [studentId=" + studentId + ", name=" + name + ", score=" + score + "]";
 	}
-	
 }
