@@ -1,10 +1,23 @@
-node {
+pipeline {
 
-    checkout scm
+  agent { label 'kubepods' }
 
-    docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
+  stages {
 
-        def img = docker.build("nirushanth/student-demo:1.0")
-        img.push()
+    stage('Checkout Source') {
+      steps {
+        git url:'https://github.com/MitraInnovationRepo/student-demo.git', branch:'dev1'
+      }
     }
+
+    stage('Deploy App') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "kubernetes/student-demo-deployment.yml", kubeconfigId: "mykubeconfig")
+        }
+      }
+    }
+
+  }
+
 }
