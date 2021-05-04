@@ -1,3 +1,4 @@
+kind: Deployment
 metadata:
   name: student-demo
 spec:
