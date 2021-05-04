@@ -4,11 +4,7 @@ node {
 
     docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
 
-        def img = docker.build("nirushanth/student-demo-test")
+        def img = docker.build("nirushanth/student-demo:1.0")
         img.push()
-    }
-    
-    script {
-        kubernetesDeploy(configs: "kubernetes/student-demo-deployment.yml", kubeconfigId: "mykubeconfig")
     }
 }

@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: student-demo
-          image: student-demo:6.0
+          image: nirushanth/student-demo:1.0
           ports:
             - containerPort: 8080
           env:   # Setting Enviornmental Variables
