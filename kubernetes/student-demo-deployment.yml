@@ -1,3 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: student-demo
+  labels:
+    name: student-demo
+spec:
+  ports:
+    - nodePort: 30163
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: student-demo
+  type: NodePort
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
