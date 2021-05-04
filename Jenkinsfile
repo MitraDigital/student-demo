@@ -1,7 +1,4 @@
 pipeline {
-
-  agent { label 'kubepods' }
-
   stages {
 
     stage('Checkout Source') {
