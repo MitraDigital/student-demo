@@ -4,8 +4,11 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello World'
                 sh 'ls'
+                sh 'cat kubernetes/student-demo-deployment.yml'
+                script {
+                  kubernetesDeploy(configs: "kubernetes/student-demo-deployment.yml", kubeconfigId: "mykubeconfig2")
+                }
             }
         }
     }
