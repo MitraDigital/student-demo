@@ -1,10 +1,14 @@
 node {
 
-	checkout scm
-	
 	environment {
 	    dockerImage = ''
 	}
+	
+    stage ('Checkout source') {
+      steps {
+        checkout scm
+      }
+    }	
 	
     docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
 	    def img = docker.build("nirushanth/student-demo")
