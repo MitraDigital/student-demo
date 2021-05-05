@@ -7,6 +7,12 @@ node {
     stage ('Checkout source') {
     	checkout scm
     }	
+    
+	stage('Docker Build') {
+		script {
+			docker.build("nirushanth/student-demo")
+		}
+	}    
 	
     docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
 	    def img = docker.build("nirushanth/student-demo")
