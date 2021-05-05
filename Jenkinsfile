@@ -5,9 +5,7 @@ node {
 	}
 	
     stage ('Checkout source') {
-      steps {
-        checkout scm
-      }
+    	checkout scm
     }	
 	
     docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
