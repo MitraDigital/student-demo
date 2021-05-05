@@ -44,12 +44,17 @@ public class StudentController {
 	
 	@GetMapping("/api/say")
 	public String hello(){
-		return "hi there one111";
+		return "One";
 	}
 	
 	@GetMapping("/api/say2")
 	public String hello2(){
-		return "hi there two222";
+		return "Two";
+	}
+	
+	@GetMapping("/api/say3")
+	public String hello3(){
+		return "Three";
 	}
 	
 	@GetMapping("/api/studentByName/{name}")
