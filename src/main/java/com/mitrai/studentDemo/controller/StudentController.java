@@ -52,11 +52,6 @@ public class StudentController {
 		return "Two";
 	}
 	
-	@GetMapping("/api/say3")
-	public String hello3(){
-		return "Three";
-	}
-	
 	@GetMapping("/api/studentByName/{name}")
 	public Student getStudentByName(@PathVariable String name){
 		return studentService.getStudentByName(name);
