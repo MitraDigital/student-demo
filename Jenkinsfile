@@ -1,4 +1,4 @@
-node {
+stages {
 
 	environment {
 	    DOCKER_IMAGE = ''
