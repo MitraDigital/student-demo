@@ -1,6 +1,5 @@
 pipeline{
 	environment {
-		script {
 		DOCKER_IMAGE = ''
 	}
 	stages {
