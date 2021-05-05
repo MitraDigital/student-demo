@@ -1,7 +1,7 @@
 node {
 
 	environment {
-	    dockerImage = ''
+	    DOCKER_IMAGE = ''
 	}
 	
     stage ('Checkout source') {
@@ -10,14 +10,14 @@ node {
     
 	stage('Docker Build') {
 		script {
-			dockerImage = docker.build("nirushanth/student-demo")
+			DOCKER_IMAGE = docker.build("nirushanth/student-demo")
 		}
 	}
 	
 	stage('Docker Push') {
 		script {
 			docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
-			    dockerImage.push()
+			    DOCKER_IMAGE.push()
 		    }
 		}
 	} 	    
