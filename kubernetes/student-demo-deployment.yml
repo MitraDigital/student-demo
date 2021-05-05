@@ -31,7 +31,8 @@ spec:
     spec:
       containers:
         - name: student-demo
-          image: student-demo:6.0
+          image: student-demo:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:   # Setting Enviornmental Variables
