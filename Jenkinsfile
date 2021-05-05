@@ -10,14 +10,19 @@ node {
     
 	stage('Docker Build') {
 		script {
-			docker.build("nirushanth/student-demo")
+			dockerImage = docker.build("nirushanth/student-demo")
 		}
-	}    
+	}
 	
-    docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
-	    def img = docker.build("nirushanth/student-demo")
-	    img.push()
-    }
+	stage('Docker Push') {
+		script {
+			docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
+			    dockerImage.push()
+		    }
+		}
+	} 	    
+	
+    
     
   stage('Apply Kubernetes files') {
     withKubeConfig([credentialsId: 'kubeconfig1']) {
