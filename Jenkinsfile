@@ -1,4 +1,11 @@
 node {
+
+    docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
+
+        def img = docker.build("nirushanth/student-demo:1.0")
+        img.push()
+    }
+    
   stage('Apply Kubernetes files') {
     withKubeConfig([credentialsId: 'kubeconfig1']) {
                 sh 'ls'
