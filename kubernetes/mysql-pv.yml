@@ -24,4 +24,3 @@ spec:
   resources:
     requests:
       storage: 20Gi
-docker build -t student-demo:6.0 .
