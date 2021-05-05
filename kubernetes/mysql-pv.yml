@@ -25,9 +25,3 @@ spec:
     requests:
       storage: 20Gi
       
-      
-kubectl apply -f mysql-configmap.yml
-kubectl apply -f mysql-admin-secrets.yml
-kubectl apply -f mysql-user-secrets.yml
-kubectl apply -f mysql-pv.yml
-kubectl apply -f mysql-deployment.yml      
