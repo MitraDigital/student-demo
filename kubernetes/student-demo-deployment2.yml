@@ -15,5 +15,6 @@ spec:
       containers:
         - name: student-demo1
           image: nirushanth/student-demo:2.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080 
