@@ -49,7 +49,7 @@ public class StudentController {
 	
 	@GetMapping("/api/say2")
 	public String hello2(){
-		return "hi there two";
+		return "hi there two222";
 	}
 	
 	@GetMapping("/api/studentByName/{name}")
