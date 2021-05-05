@@ -1,19 +1,9 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Hello') {
-            steps {
+node {
+  stage('Apply Kubernetes files') {
+    withKubeConfig([credentialsId: 'mykubeconfig2']) {
                 sh 'ls'
-                sh 'cat kubernetes/student-demo-deployment.yml'
-                script {
-                        docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
-                        def img = docker.build("nirushanth/student-demo:1.0")
-                        img.push()
-                    }
-                  kubernetesDeploy(configs: "kubernetes/student-demo-deployment.yml", kubeconfigId: "mykubeconfig2")
-                }
-            }
-        }
+                sh 'cat kubernetes/student-demo-deployment2.yml'
+                sh 'kubectl apply -f kubernetes/student-demo-deployment2.yml'
     }
+  }
 }
