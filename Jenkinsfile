@@ -22,11 +22,12 @@ node {
 		}
 	} 	    
 	
-    
-    
-  stage('Apply Kubernetes files') {
-    withKubeConfig([credentialsId: 'kubeconfig1']) {
-		sh 'kubectl apply -f kubernetes/student-demo-deployment.yml'
-    }
-  }
+	stage('Kubernetes Deployment') {
+		withKubeConfig([credentialsId: 'kubeconfig1']) {
+			sh 'kubectl apply -f kubernetes/student-demo-deployment.yml'
+		}
+	}
+	
+
 }
+
