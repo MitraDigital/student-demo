@@ -18,23 +18,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: student-demo
+  name: student-demo1
 spec:
   selector:
     matchLabels:
-      app: student-demo
+      app: student-demo1
   replicas: 1
   template:
     metadata:
       labels:
-        app: student-demo
+        app: student-demo1
     spec:
       containers:
-        - name: student-demo
-          image: nirushanth/student-demo:latest
+        - name: student-demo1
+          image: nirushanth/student-demo:2.0
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 8080 
           env:   # Setting Enviornmental Variables
             - name: DB_HOST   # Setting Database host address from configMap
               valueFrom:
@@ -55,4 +55,4 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: db-user
-                  key: password
+                  key: password            
